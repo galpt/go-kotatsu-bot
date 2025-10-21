@@ -1,0 +1,20 @@
+## Example configuration for Kotatsu Forum Tag Bot
+## Copy this file to `config.yaml` and fill values. Environment variables will override file values.
+
+discord_token: "YOUR_BOT_TOKEN_HERE"
+
+# Optional: list of forum parent channel IDs to watch. If empty, the bot will act on any forum thread.
+forum_parent_ids:
+- "123456789012345678"
+- "987654321098765432"
+
+# Optional: restrict who can run commands by role or permissions.
+# If empty, default behavior is to allow users with ManageChannels/ManageRoles/ManageMessages/Admin.
+allowed_role_ids:
+
+- "111111111111111111"
+
+allowed_permissions:
+
+- "ADMINISTRATOR"
+- "MANAGE_CHANNELS"
