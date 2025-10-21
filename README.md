@@ -51,8 +51,6 @@ go build
 
 3. Run:
 
-> [!NOTE]  
-> Supply the raw token (without the leading "Bot ") when setting the environment variable or in the YAML.
 ```powershell
 $env:DISCORD_TOKEN = "<your_token>" # optional, will override config file
 # optional: override forum parents
@@ -60,6 +58,8 @@ $env:FORUM_PARENT_IDS = "12345,67890"
 .
 \bot.exe
 ```
+> [!NOTE]  
+> Supply the raw token (without the leading "Bot ") when setting the environment variable or in the YAML.
 
 ## Configuration file (`config.yaml`)
 ```yaml
@@ -75,8 +75,8 @@ forum_parent_ids:
   - Review the bot logs for permission or HTTP errors.
 
 ## Development notes
-- The bot uses discordgo for gateway connections and direct REST calls for forum tag operations (reads `available_tags` and updates `applied_tags`).
+- The bot uses [discordgo](https://github.com/bwmarrin/discordgo) for gateway connections and direct REST calls for forum tag operations (reads `available_tags` and updates `applied_tags`).
 - The `commandConfig` map in `commands.go` defines the available commands and their corresponding tag names. Edit this map to add/remove commands or change labels.
 
 ## License
-- MIT (or your preferred license)
+This project is licensed under the MIT - see the [LICENSE](LICENSE) file for details.
