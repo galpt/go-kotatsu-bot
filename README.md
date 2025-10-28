@@ -39,6 +39,22 @@ This bot was designed to streamline support workflows in Discord Forum channels:
 ## Gateway intents
 - The bot uses the Message Content intent. Make sure the bot application has Message Content intent enabled in the Developer Portal.
 
+## Search (AniList) feature
+This bot now includes an optional message scanning feature (inspired by the Emanon bot) that allows non-staff users to search AniList by writing names in simple inline formats. By default this feature is enabled and will scan messages unless turned off in the configuration.
+
+Detection rules (simple):
+- Backtick-delimited text: `Name`
+- Curly braces: {Name}
+- Angle brackets: <Name>
+
+If a match is found the bot will query AniList and post a compact embed with basic information and a link.
+
+Configuration (in `example_config.yaml`):
+- `search_enabled` (default: true) — set to `false` to disable scanning.
+- `search_channels` (list) — if non-empty, the bot will only scan the listed channel or thread IDs.
+
+Adult content: if the channel is NSFW the bot will allow queries that return adult results; otherwise adult media are filtered.
+
 ## Installation
 1. Build (from the `bot/` folder):
 

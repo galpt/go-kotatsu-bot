@@ -18,3 +18,8 @@ allowed_permissions:
 
 - "ADMINISTRATOR"
 - "MANAGE_CHANNELS"
+
+# Search feature: enabled by default. If you set `search_enabled: false` the bot will not scan messages.
+# If `search_channels` is set, the bot will only scan those channel IDs (threads or channels).
+search_enabled: true
+search_channels: []

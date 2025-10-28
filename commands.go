@@ -31,7 +31,24 @@ func (h *handler) onMessageCreate(s *discordgo.Session, m *discordgo.MessageCrea
 	}
 
 	content := strings.TrimSpace(m.Content)
-	if content == "" || !strings.HasPrefix(content, ".") {
+	if content == "" {
+		return
+	}
+
+	// If the message is not a command (doesn't start with '.'), consider running the search feature
+	if !strings.HasPrefix(content, ".") {
+		// run the search flow if enabled in config and allowed in this channel
+		// Fetch channel info first so we can evaluate NSFW and config channel restrictions
+		ch, err := s.Channel(m.ChannelID)
+		if err == nil {
+			// do not block other flows if search fails
+			go func() {
+				if err := h.trySearchInMessage(s, m, ch); err != nil {
+					// log but do not disrupt
+					log.Printf("search handler error: %v", err)
+				}
+			}()
+		}
 		return
 	}
 
